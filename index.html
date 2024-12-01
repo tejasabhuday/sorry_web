@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fbe9e7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .page {
+            text-align: center;
+            display: none;
+        }
+
+        h1 {
+            color: #6b3f0b;
+        }
+
+        .button {
+            background-color: #f6a5b6;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #f06785;
+        }
+
+        .image {
+            width: 200px;
+            margin-top: 20px;
+        }
+
+        .moving-button {
+            position: relative;
+        }
+
+        video {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .page img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-1" class="page">
+        <h1>Galti Hogayi Na 😔</h1>
+        <p>Are you still angry?</p>
+        <button class="button" onclick="nextPage(2)">Yes</button>
+        <button class="button" onclick="nextPage(2)">No</button>
+    </div>
+
+    <div id="page-2" class="page">
+        <h1>I’m Really Sorry</h1>
+        <img src="assets/image.png" alt="Apology Image" class="image">
+        <p>Does this feel enough? No, right?</p>
+        <button class="button" onclick="nextPage(3)">No</button>
+    </div>
+
+    <div id="page-3" class="page">
+        <video controls autoplay>
+            <source src="assets/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>
+            I promise this will not happen again, and I will never stop putting in effort because you deserve nothing but the best.
+        </p>
+        <button class="button" onclick="nextPage(4)">Okay</button>
+    </div>
+
+    <div id="page-4" class="page">
+        <h1>Maaf kardo cutie, aap nahi karoge toh kaun karega? 🥺</h1>
+        <button class="button" onclick="nextPage(5)">Forgive Me</button>
+        <button id="no-button" class="button moving-button">No</button>
+    </div>
+
+    <div id="page-5" class="page">
+        <h1>
+            I promise you your favorite chocolate milk whenever you want, kisi bhi qimat pe! 🥰
+        </h1>
+        <p>So now, do you please forgive me? Pleassssseeeeeeee 🙏</p>
+        <button class="button" onclick="nextPage(6)">Yes</button>
+        <button id="no-button-5" class="button moving-button">No</button>
+    </div>
+
+    <div id="page-6" class="page">
+        <h1>Thank you very much ji, thank you! mai aapka aishaasn kabhi nahi bhoolonga 🥰</h1>
+        <img src="assets/image1.png" alt="I love you this much" class="image">
+        <button class="button" onclick="alert('Thank you for forgiving me! 🥰')">Okay i forgive you</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+
+        function showPage(pageNumber) {
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`page-${i}`).style.display = 'none';
+            }
+            document.getElementById(`page-${pageNumber}`).style.display = 'block';
+        }
+
+        function nextPage(pageNumber) {
+            currentPage = pageNumber;
+            showPage(pageNumber);
+        }
+
+        // Make the "No" button on pages move around
+        document.getElementById('no-button').addEventListener('mouseover', function () {
+            this.style.position = 'absolute';
+            this.style.top = Math.random() * window.innerHeight + 'px';
+            this.style.left = Math.random() * window.innerWidth + 'px';
+        });
+
+        document.getElementById('no-button-5').addEventListener('mouseover', function () {
+            this.style.position = 'absolute';
+            this.style.top = Math.random() * window.innerHeight + 'px';
+            this.style.left = Math.random() * window.innerWidth + 'px';
+        });
+
+        showPage(currentPage);
+    </script>
+</body>
+</html>
